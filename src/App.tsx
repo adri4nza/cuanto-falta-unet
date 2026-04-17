@@ -63,7 +63,11 @@ function App() {
     (total, item) => total + toNumber(item.weight),
     0,
   )
-  const remainingWeight = Math.max(0, 100 - usedWeight)
+  const hasWeightOverflow = usedWeight > 100
+  const remainingWeight = hasWeightOverflow ? 0 : Math.max(0, 100 - usedWeight)
+
+  const hasEmptyGrades = gradesData.some((item) => String(item.grade).trim() === '')
+  const isReadyToCalculate = !hasEmptyGrades && !hasWeightOverflow
 
   const currentAccumulated = gradesData.reduce((total, item) => {
     const grade = toNumber(item.grade)
@@ -105,11 +109,17 @@ function App() {
           onGradeChange={updateGrade}
           onWeightChange={updateWeight}
         />
+        {hasWeightOverflow && (
+          <p className="mt-3 text-center text-xs font-medium text-red-400">
+            Error: La suma de los porcentajes supera el 100%
+          </p>
+        )}
         <PredictedPartial
           partialNumber={selectedPartials}
           remainingWeight={remainingWeight}
         />
         <ResultsCard
+          isReadyToCalculate={isReadyToCalculate}
           requiredFor5={requiredFor5}
           requiredFor7={requiredFor7}
           requiredFor8={requiredFor8}

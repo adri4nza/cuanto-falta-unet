@@ -12,7 +12,7 @@ function SegmentedControl({
   return (
     <section className="mt-4">
       <h2 className="mb-3 text-[11px] font-bold tracking-widest text-gray-400 uppercase">
-        Select Partials
+        Cantidad de Parciales
       </h2>
 
       <div className="flex gap-2">

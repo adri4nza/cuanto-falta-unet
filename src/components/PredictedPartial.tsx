@@ -25,18 +25,18 @@ function PredictedPartial({
             />
           </svg>
           <h2 className="text-[11px] font-bold tracking-widest text-gray-400 uppercase">
-            Final Partial ({partialNumber})
+            Último Parcial ({partialNumber})
           </h2>
         </div>
 
         <span className="rounded-md bg-[#1a2a2e] px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-[#2dd4bf] uppercase">
-          Predicted
+          Proyectado
         </span>
       </div>
 
       <div className="flex items-center gap-3 rounded-2xl bg-[#131c20]/60 px-3 py-3">
         <div className="flex flex-1 items-center rounded-xl bg-[#0b1214]/60 px-4 py-2.5">
-          <span className="text-sm text-gray-500">Pending Grade...</span>
+          <span className="text-sm text-gray-500">Nota pendiente...</span>
         </div>
 
         <div className="flex items-center gap-1 rounded-xl bg-[#0b1214]/60 px-3.5 py-2.5">
