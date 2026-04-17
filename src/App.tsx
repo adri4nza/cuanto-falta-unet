@@ -66,8 +66,16 @@ function App() {
   const hasWeightOverflow = usedWeight > 100
   const remainingWeight = hasWeightOverflow ? 0 : Math.max(0, 100 - usedWeight)
 
-  const hasEmptyGrades = gradesData.some((item) => String(item.grade).trim() === '')
-  const isReadyToCalculate = !hasEmptyGrades && !hasWeightOverflow
+  const isReadyToCalculate = !hasWeightOverflow
+
+  const maxAllowedWeights = gradesData.map((item) => {
+    const othersWeight = gradesData.reduce(
+      (total, other) => (other.id === item.id ? total : total + toNumber(other.weight)),
+      0,
+    )
+
+    return Math.max(0, 99 - othersWeight)
+  })
 
   const currentAccumulated = gradesData.reduce((total, item) => {
     const grade = toNumber(item.grade)
@@ -106,6 +114,7 @@ function App() {
         />
         <CompletedPartials
           items={gradesData}
+          maxAllowedWeights={maxAllowedWeights}
           onGradeChange={updateGrade}
           onWeightChange={updateWeight}
         />
