@@ -106,7 +106,7 @@ function CompletedPartials({
                 </div>
 
                 {isCustomWeight ? (
-                  <div className="relative flex w-24 items-center rounded-xl bg-[#0b1214] px-2.5 py-2.5">
+                  <div className="relative flex w-16 shrink-0 items-center rounded-xl bg-[#0b1214] px-1 py-2.5 sm:w-20 sm:px-2">
                     <input
                       type="number"
                       inputMode="decimal"
@@ -122,7 +122,7 @@ function CompletedPartials({
                     </span>
                   </div>
                 ) : (
-                  <div className="relative flex w-24 items-center rounded-xl bg-[#0b1214] px-2.5 py-2.5">
+                  <div className="relative flex w-16 shrink-0 items-center rounded-xl bg-[#0b1214] px-1 py-2.5 sm:w-20 sm:px-2">
                     <select
                       value={item.weight}
                       onChange={(event) => {
