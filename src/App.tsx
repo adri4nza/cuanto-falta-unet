@@ -8,6 +8,7 @@ import Header from './components/Header'
 import PredictedPartial from './components/PredictedPartial'
 import ResultsCard from './components/ResultsCard'
 import SegmentedControl from './components/SegmentedControl'
+import { convertirEscalaUnet } from './utils/unetMath'
 
 const partials = [1, 2, 3, 4]
 
@@ -64,6 +65,30 @@ function App() {
   )
   const remainingWeight = Math.max(0, 100 - usedWeight)
 
+  const currentAccumulated = gradesData.reduce((total, item) => {
+    const grade = toNumber(item.grade)
+    const weight = toNumber(item.weight)
+
+    return total + convertirEscalaUnet(grade) * (weight / 100)
+  }, 0)
+
+  const calculateRequiredGrade = (targetScore: number): number | 'Imposible' => {
+    for (let i = 0; i <= 100; i += 1) {
+      const projectedScore =
+        currentAccumulated + convertirEscalaUnet(i) * (remainingWeight / 100)
+
+      if (projectedScore >= targetScore) {
+        return i
+      }
+    }
+
+    return 'Imposible'
+  }
+
+  const requiredFor5 = calculateRequiredGrade(4.5)
+  const requiredFor7 = calculateRequiredGrade(6.5)
+  const requiredFor9 = calculateRequiredGrade(8.5)
+
   return (
     <div className="mx-auto flex min-h-dvh max-w-md flex-col bg-[#0b1214] font-sans text-white sm:border-x sm:border-[#1e2a2e]">
       <Header />
@@ -83,7 +108,11 @@ function App() {
           partialNumber={selectedPartials}
           remainingWeight={remainingWeight}
         />
-        <ResultsCard />
+        <ResultsCard
+          requiredFor5={requiredFor5}
+          requiredFor7={requiredFor7}
+          requiredFor9={requiredFor9}
+        />
       </main>
       <BottomNav />
     </div>

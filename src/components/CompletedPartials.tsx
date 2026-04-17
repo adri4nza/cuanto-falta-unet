@@ -4,6 +4,8 @@ export interface CompletedPartialItem {
   weight: string | number
 }
 
+const weightOptions = [15, 20, 25, 30, 35]
+
 interface CompletedPartialsProps {
   items: CompletedPartialItem[]
   onGradeChange: (id: number, value: string) => void
@@ -43,18 +45,27 @@ function CompletedPartials({
               <span className="text-xs font-medium text-gray-500">pts</span>
             </div>
 
-            <div className="flex items-center gap-1 rounded-xl bg-[#0b1214] px-3.5 py-2.5">
-              <input
-                type="number"
-                inputMode="decimal"
+            <div className="relative flex w-24 items-center rounded-xl bg-[#0b1214] px-2.5 py-2.5">
+              <select
                 value={item.weight}
                 onChange={(event) => onWeightChange(item.id, event.target.value)}
-                placeholder="0"
-                className="w-12 bg-transparent text-sm font-medium text-gray-300 outline-none placeholder:text-gray-600"
-              />
-              <span className="text-sm font-medium text-gray-400">%</span>
+                className="w-full appearance-none bg-transparent pr-5 text-sm font-medium text-gray-300 outline-none"
+              >
+                <option value="" className="bg-[#0b1214] text-gray-500">
+                  --
+                </option>
+                {weightOptions.map((weight) => (
+                  <option
+                    key={weight}
+                    value={weight}
+                    className="bg-[#0b1214] text-gray-200"
+                  >
+                    {weight}%
+                  </option>
+                ))}
+              </select>
               <svg
-                className="h-3.5 w-3.5 text-gray-500"
+                className="pointer-events-none absolute right-2 h-3.5 w-3.5 text-gray-500"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
