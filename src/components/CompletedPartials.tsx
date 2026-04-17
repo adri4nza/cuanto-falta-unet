@@ -88,25 +88,25 @@ function CompletedPartials({
               key={item.id}
               className="rounded-2xl bg-[#131c20] px-3 py-3"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 px-2 py-3">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#1a2a2e] text-xs font-bold text-[#2dd4bf]">
                   {item.id}
                 </span>
 
-                <div className="flex flex-1 items-center rounded-xl bg-[#0b1214] px-4 py-2.5">
+                <div className="flex flex-1 min-w-0 items-center rounded-xl bg-[#0b1214] px-2 py-2.5 sm:px-4">
                   <input
                     type="number"
                     inputMode="decimal"
                     value={item.grade}
                     onChange={(event) => handleGradeChange(item.id, event.target.value)}
                     placeholder="0"
-                    className="flex-1 bg-transparent text-base font-semibold text-white outline-none placeholder:text-gray-600 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                    className="min-w-0 w-full flex-1 bg-transparent text-base font-semibold text-white outline-none placeholder:text-gray-600 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                   />
                   <span className="text-xs font-medium text-gray-500">pts</span>
                 </div>
 
                 {isCustomWeight ? (
-                  <div className="relative flex w-16 shrink-0 items-center rounded-xl bg-[#0b1214] px-1 py-2.5 sm:w-20 sm:px-2">
+                  <div className="relative flex w-16 shrink-0 items-center rounded-xl bg-[#0b1214] px-1 py-2.5 sm:w-20">
                     <input
                       type="number"
                       inputMode="decimal"
@@ -115,14 +115,14 @@ function CompletedPartials({
                         handleCustomWeightChange(item.id, event.target.value)
                       }
                       placeholder="0"
-                      className="w-full bg-transparent pr-5 text-sm font-medium text-gray-300 outline-none placeholder:text-gray-600 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                      className="w-full bg-transparent pr-5 text-center text-sm font-medium text-gray-300 outline-none placeholder:text-gray-600 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                     />
                     <span className="pointer-events-none absolute right-2 text-xs text-gray-500">
                       %
                     </span>
                   </div>
                 ) : (
-                  <div className="relative flex w-16 shrink-0 items-center rounded-xl bg-[#0b1214] px-1 py-2.5 sm:w-20 sm:px-2">
+                  <div className="relative flex w-16 shrink-0 items-center rounded-xl bg-[#0b1214] px-1 py-2.5 sm:w-20">
                     <select
                       value={item.weight}
                       onChange={(event) => {
@@ -134,7 +134,7 @@ function CompletedPartials({
 
                         disableCustomWeight(item.id, value)
                       }}
-                      className="w-full appearance-none bg-transparent pr-5 text-sm font-medium text-gray-300 outline-none"
+                      className="w-full appearance-none bg-transparent pr-4 text-center text-sm font-medium text-gray-300 outline-none"
                     >
                       <option value="" className="bg-[#0b1214] text-gray-500">
                         --

@@ -12,7 +12,7 @@ function App() {
   const [currentTab, setCurrentTab] = useState<Tab>('cuanto-falta')
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col overflow-x-hidden bg-[#0b1214] font-sans text-white sm:border-x sm:border-[#1e2a2e]">
+    <div className="relative mx-auto flex min-h-dvh w-full max-w-md flex-col overflow-hidden bg-[#0b1214] font-sans text-white">
       <Header />
 
       {currentTab === 'definitiva' && <DefinitivaScreen />}

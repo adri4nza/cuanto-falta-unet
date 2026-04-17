@@ -34,12 +34,12 @@ function PredictedPartial({
         </span>
       </div>
 
-      <div className="flex items-center gap-3 rounded-2xl bg-[#131c20]/60 px-3 py-3">
-        <div className="flex flex-1 items-center rounded-xl bg-[#0b1214]/60 px-4 py-2.5">
-          <span className="text-sm text-gray-500">Nota pendiente...</span>
+      <div className="flex items-center gap-2 rounded-2xl bg-[#131c20]/60 px-2 py-3">
+        <div className="flex flex-1 min-w-0 items-center rounded-xl bg-[#0b1214]/60 px-2 py-2.5 sm:px-4">
+          <span className="truncate text-sm text-gray-500">Nota pendiente...</span>
         </div>
 
-        <div className="flex items-center gap-1 rounded-xl bg-[#0b1214]/60 px-3.5 py-2.5">
+        <div className="flex shrink-0 items-center gap-1 rounded-xl bg-[#0b1214]/60 px-2.5 py-2.5">
           <span className="text-sm font-medium text-gray-500">
             {remainingWeight}%
           </span>
