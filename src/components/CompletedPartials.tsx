@@ -172,9 +172,9 @@ function CompletedPartials({
 
               {/* Simulation slider */}
               <div className="mt-2.5 px-1">
-                <p className="mb-1 text-[10px] text-gray-500">
+                {/* <p className="mb-1 text-[10px] text-gray-500">
                   Desliza para simular nota
-                </p>
+                </p> */}
                 <input
                   type="range"
                   min={0}
