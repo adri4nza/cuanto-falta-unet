@@ -17,6 +17,21 @@ function CompletedPartials({
   onGradeChange,
   onWeightChange,
 }: CompletedPartialsProps) {
+  const handleGradeChange = (id: number, rawValue: string) => {
+    if (rawValue === '') {
+      onGradeChange(id, '')
+      return
+    }
+
+    const parsedValue = Number(rawValue)
+    if (!Number.isFinite(parsedValue)) {
+      return
+    }
+
+    const clampedValue = Math.min(100, Math.max(0, parsedValue))
+    onGradeChange(id, String(clampedValue))
+  }
+
   return (
     <section className="mt-7">
       <h2 className="mb-3 text-[11px] font-bold tracking-widest text-gray-400 uppercase">
@@ -38,9 +53,9 @@ function CompletedPartials({
                 type="number"
                 inputMode="decimal"
                 value={item.grade}
-                onChange={(event) => onGradeChange(item.id, event.target.value)}
+                onChange={(event) => handleGradeChange(item.id, event.target.value)}
                 placeholder="0"
-                className="flex-1 bg-transparent text-base font-semibold text-white outline-none placeholder:text-gray-600"
+                className="flex-1 bg-transparent text-base font-semibold text-white outline-none placeholder:text-gray-600 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
               />
               <span className="text-xs font-medium text-gray-500">pts</span>
             </div>

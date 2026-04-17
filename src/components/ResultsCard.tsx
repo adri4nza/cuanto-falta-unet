@@ -3,6 +3,7 @@ type RequiredGradeValue = number | 'Imposible'
 interface ResultsCardProps {
   requiredFor5: RequiredGradeValue
   requiredFor7: RequiredGradeValue
+  requiredFor8: RequiredGradeValue
   requiredFor9: RequiredGradeValue
 }
 
@@ -12,6 +13,7 @@ const isNumericRequirement = (value: RequiredGradeValue): value is number =>
 function ResultsCard({
   requiredFor5,
   requiredFor7,
+  requiredFor8,
   requiredFor9,
 }: ResultsCardProps) {
   return (
@@ -43,6 +45,21 @@ function ResultsCard({
             <span className="text-2xl font-bold text-[#93c5fd]">{requiredFor7}</span>
             {isNumericRequirement(requiredFor7) && (
               <span className="ml-1 text-xs font-medium text-[#93c5fd]/70">pts</span>
+            )}
+          </div>
+        </div>
+
+        <div className="my-4 border-t border-[#1e2a2e]" />
+
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm font-semibold text-gray-300">Target Grade (8)</p>
+            <p className="mt-0.5 text-xs text-gray-500">UNET target: 7.5</p>
+          </div>
+          <div className="text-right">
+            <span className="text-2xl font-bold text-orange-400">{requiredFor8}</span>
+            {isNumericRequirement(requiredFor8) && (
+              <span className="ml-1 text-xs font-medium text-orange-300/70">pts</span>
             )}
           </div>
         </div>
