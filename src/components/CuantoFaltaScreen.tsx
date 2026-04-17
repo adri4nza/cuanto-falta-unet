@@ -95,6 +95,7 @@ function CuantoFaltaScreen() {
   }
 
   const requiredFor5 = calculateRequiredGrade(4.5)
+  const requiredFor6 = calculateRequiredGrade(5.5)
   const requiredFor7 = calculateRequiredGrade(6.5)
   const requiredFor8 = calculateRequiredGrade(7.5)
   const requiredFor9 = calculateRequiredGrade(8.5)
@@ -124,6 +125,7 @@ function CuantoFaltaScreen() {
       <ResultsCard
         isReadyToCalculate={isReadyToCalculate}
         requiredFor5={requiredFor5}
+        requiredFor6={requiredFor6}
         requiredFor7={requiredFor7}
         requiredFor8={requiredFor8}
         requiredFor9={requiredFor9}
