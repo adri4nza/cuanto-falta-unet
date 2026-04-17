@@ -1,14 +1,20 @@
 export interface CompletedPartialItem {
   id: number
-  grade: number
-  weight: number
+  grade: string | number
+  weight: string | number
 }
 
 interface CompletedPartialsProps {
   items: CompletedPartialItem[]
+  onGradeChange: (id: number, value: string) => void
+  onWeightChange: (id: number, value: string) => void
 }
 
-function CompletedPartials({ items }: CompletedPartialsProps) {
+function CompletedPartials({
+  items,
+  onGradeChange,
+  onWeightChange,
+}: CompletedPartialsProps) {
   return (
     <section className="mt-7">
       <h2 className="mb-3 text-[11px] font-bold tracking-widest text-gray-400 uppercase">
@@ -26,14 +32,27 @@ function CompletedPartials({ items }: CompletedPartialsProps) {
             </span>
 
             <div className="flex flex-1 items-center rounded-xl bg-[#0b1214] px-4 py-2.5">
-              <span className="flex-1 text-base font-semibold text-white">
-                {item.grade}
-              </span>
+              <input
+                type="number"
+                inputMode="decimal"
+                value={item.grade}
+                onChange={(event) => onGradeChange(item.id, event.target.value)}
+                placeholder="0"
+                className="flex-1 bg-transparent text-base font-semibold text-white outline-none placeholder:text-gray-600"
+              />
               <span className="text-xs font-medium text-gray-500">pts</span>
             </div>
 
             <div className="flex items-center gap-1 rounded-xl bg-[#0b1214] px-3.5 py-2.5">
-              <span className="text-sm font-medium text-gray-300">{item.weight}%</span>
+              <input
+                type="number"
+                inputMode="decimal"
+                value={item.weight}
+                onChange={(event) => onWeightChange(item.id, event.target.value)}
+                placeholder="0"
+                className="w-12 bg-transparent text-sm font-medium text-gray-300 outline-none placeholder:text-gray-600"
+              />
+              <span className="text-sm font-medium text-gray-400">%</span>
               <svg
                 className="h-3.5 w-3.5 text-gray-500"
                 fill="none"

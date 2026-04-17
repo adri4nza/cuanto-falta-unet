@@ -1,8 +1,12 @@
 interface PredictedPartialProps {
   partialNumber: number
+  remainingWeight: number
 }
 
-function PredictedPartial({ partialNumber }: PredictedPartialProps) {
+function PredictedPartial({
+  partialNumber,
+  remainingWeight,
+}: PredictedPartialProps) {
   return (
     <section className="mt-8">
       <div className="mb-3 flex items-center gap-3">
@@ -36,7 +40,9 @@ function PredictedPartial({ partialNumber }: PredictedPartialProps) {
         </div>
 
         <div className="flex items-center gap-1 rounded-xl bg-[#0b1214]/60 px-3.5 py-2.5">
-          <span className="text-sm font-medium text-gray-500">25%</span>
+          <span className="text-sm font-medium text-gray-500">
+            {remainingWeight}%
+          </span>
           <svg
             className="h-3.5 w-3.5 text-gray-600"
             fill="none"
